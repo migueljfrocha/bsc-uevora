@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head('Gestão de Anúncios')}"></head>
+<body>
+    <header th:replace="~{fragments/layout :: header(${user})}"></header>
+    
+    <main>
+        <h1 class="page-title">Gestão de Anúncios</h1>
+        
+        <!-- Success Message -->
+        <div th:if="${message}" class="alert alert-success" th:text="${message}"></div>
+        
+        <!-- Ads Table -->
+        <div th:if="${adsPage != null && adsPage.hasContent()}" class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Tipo</th>
+                        <th>Quarto</th>
+                        <th>Localização</th>
+                        <th>Preço</th>
+                        <th>Anunciante</th>
+                        <th>Estado</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="ad : ${adsPage.content}">
+                        <td th:text="${ad.id}">1</td>
+                        <td>
+                            <span class="badge" 
+                                  th:text="${ad.adType.name() == 'OFFER'} ? 'Oferta' : 'Procura'">
+                            </span>
+                        </td>
+                        <td th:text="${ad.roomType}">T1</td>
+                        <td th:text="${ad.location}">Évora</td>
+                        <td th:text="${#numbers.formatDecimal(ad.price, 1, 2)} + ' €'">0.00 €</td>
+                        <td th:text="${ad.advertiser.name}">Nome</td>
+                        <td>
+                            <span class="badge" 
+                                  th:classappend="${ad.status.name() == 'ACTIVE'} ? 'badge-active' : 'badge-inactive'"
+                                  th:text="${ad.status.name() == 'ACTIVE'} ? 'Ativo' : 'Inativo'">
+                            </span>
+                        </td>
+                        <td>
+                            <form th:if="${ad.status.name() == 'INACTIVE'}" 
+                                  th:action="@{/admin/activate-ad/{id}(id=${ad.id})}" 
+                                  method="post" 
+                                  style="display: inline;">
+                                <button type="submit" class="btn btn-sm btn-success">Ativar</button>
+                            </form>
+                            
+                            <form th:if="${ad.status.name() == 'ACTIVE'}" 
+                                  th:action="@{/admin/deactivate-ad/{id}(id=${ad.id})}" 
+                                  method="post" 
+                                  style="display: inline;"
+                                  data-confirm="Tem a certeza que deseja desativar este anúncio?">
+                                <button type="submit" class="btn btn-sm btn-danger">Desativar</button>
+                            </form>
+                            
+                            <a th:href="@{/ads/{id}(id=${ad.id})}" class="btn btn-sm btn-primary">Ver</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div th:if="${adsPage == null || !adsPage.hasContent()}" class="empty-state">
+            <h3>Sem Anúncios</h3>
+            <p>Não há anúncios para gerir no momento.</p>
+        </div>
+        
+        <!-- Pagination -->
+        <div th:if="${adsPage != null && adsPage.hasContent()}" 
+             th:replace="~{fragments/layout :: pagination(${adsPage}, ${baseUrl}, null, null)}">
+        </div>
+        
+        
+        <div class="text-center add-margin-top">
+            <a th:href="@{/admin}" class="btn btn-secondary">Voltar ao Painel</a>
+        </div>
+    </main>
+    
+    <div th:replace="~{fragments/layout :: scripts}"></div>
+</body>
+</html>

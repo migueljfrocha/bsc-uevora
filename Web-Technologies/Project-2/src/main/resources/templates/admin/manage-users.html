@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head('Gestão de Utilizadores')}"></head>
+<body>
+    <header th:replace="~{fragments/layout :: header(${user})}"></header>
+    
+    <main>
+        <h1 class="page-title">Gestão de Utilizadores</h1>
+        
+        <!-- Success Message -->
+        <div th:if="${message}" class="alert alert-success" th:text="${message}"></div>
+        
+        <div th:if="${usersPage != null && usersPage.hasContent()}" class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Username</th>
+                        <th>Nome</th>
+                        <th>Email</th>
+                        <th>Estado</th>
+                        <th>Data de Registo</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="user : ${usersPage.content}">
+                        <td th:text="${user.userId}">1</td>
+                        <td th:text="${user.username}">username</td>
+                        <td th:text="${user.name}">Nome Completo</td>
+                        <td th:text="${user.email}">email@example.com</td>
+                        <td>
+                            <span class="badge" 
+                                  th:classappend="${user.status.name() == 'ACTIVE'} ? 'badge-active' : 'badge-inactive'"
+                                  th:text="${user.status.name() == 'ACTIVE'} ? 'Ativo' : 'Pendente'">
+                            </span>
+                        </td>
+                        <td th:text="${#temporals.format(user.createdAt, 'dd/MM/yyyy HH:mm')}">01/01/2025</td>
+                        <td>
+                            <form th:if="${user.status.name() == 'INACTIVE'}" 
+                                  th:action="@{/admin/approve-user/{id}(id=${user.userId})}" 
+                                  method="post" 
+                                  style="display: inline;">
+                                <button type="submit" class="btn btn-sm btn-success">Aprovar</button>
+                            </form>
+                            
+                            <span th:if="${user.status.name() == 'ACTIVE'}" 
+                                  class="badge badge-active">
+                                Aprovado
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div th:if="${usersPage == null || !usersPage.hasContent()}" class="empty-state">
+            <h3>Sem Utilizadores</h3>
+            <p>Não há utilizadores pendentes de aprovação.</p>
+        </div>
+        
+        <!-- Pagination -->
+        <div th:if="${usersPage != null && usersPage.hasContent()}" 
+             th:replace="~{fragments/layout :: pagination(${usersPage}, ${baseUrl}, null, null)}">
+        </div>
+        
+        <div class="text-center add-margin-top">
+            <a th:href="@{/admin}" class="btn btn-secondary">Voltar ao Painel</a>
+        </div>
+    </main>
+    
+    <div th:replace="~{fragments/layout :: scripts}"></div>
+</body>
+</html>

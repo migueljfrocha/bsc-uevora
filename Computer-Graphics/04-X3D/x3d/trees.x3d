@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE X3D 
+    PUBLIC 
+    "ISO//Web3D//DTD X3D 3.3//EN" 
+    "http://www.web3d.org/specifications/x3d-4.0.dtd">
+<X3D 
+    profile="Full" 
+    version="4.0" 
+    xmlns:xsd="https://www.w3.org/TR/xmlschema-1/" 
+    xsd:noNamespaceSchemaLocation="http://www.web3d.org/specifications/x3d-4.0.xsd">
+    <Scene>
+       <Switch whichChoice="-1">
+            <Group DEF= "SmallTreeBottomLeaves">
+                    <Shape>
+                        <Appearance>
+                            <CommonSurfaceShader>
+                                <ImageTexture containerField="diffuseTexture" url="../media/treeLeaves3.jpeg"></ImageTexture>
+                            </CommonSurfaceShader>
+                        </Appearance>
+                        <Sphere radius='0.17'/>
+                    </Shape>
+            </Group>
+
+            <Group DEF= "BigTreeBottomLeaves">
+                    <Shape>
+                        <Appearance>
+                            <CommonSurfaceShader>
+                                <ImageTexture containerField="diffuseTexture" url="../media/treeLeaves3.jpeg"></ImageTexture>
+                            </CommonSurfaceShader>
+                        </Appearance>
+                        <Sphere radius='0.25'/>
+                    </Shape>
+            </Group>
+
+            <Group DEF= "BiggerTreeBottomLeaves">
+                    <Shape>
+                        <Appearance>
+                            <CommonSurfaceShader>
+                                <ImageTexture containerField="diffuseTexture" url="../media/treeLeaves2.jpg"></ImageTexture>
+                            </CommonSurfaceShader>
+                        </Appearance>
+                        <Sphere radius='0.5'/>
+                    </Shape>
+            </Group>
+
+            <Group DEF = "smallTree">
+                <Transform translation='0 0.015 0'>
+                    <Shape>
+                        <Appearance>
+                            <CommonSurfaceShader>
+                                <ImageTexture containerField="diffuseTexture" url="../media/treeTrunk3.jpg"></ImageTexture>
+                            </CommonSurfaceShader>
+                        </Appearance>
+                        <Cone bottomRadius='0.12' height='0.5' side='true' topRadius='0.09'/>
+                    </Shape>
+                </Transform>
+
+                <!-- Leaves -->
+                <Transform translation='0 0.515 0'>
+                    <Group USE="BigTreeBottomLeaves"> </Group>
+                </Transform>
+
+                <Transform translation='-0.15 0.415 0'>
+                    <Group USE="SmallTreeBottomLeaves"> </Group>
+                </Transform>
+
+                <Transform translation='0.15 0.415 0'>
+                    <Group USE="SmallTreeBottomLeaves"> </Group>
+                </Transform>
+
+                <Transform translation='0 0.415 -0.15'>
+                    <Group USE="SmallTreeBottomLeaves"> </Group>
+                </Transform>
+
+                <Transform translation='0 0.415 0.15'>
+                    <Group USE="SmallTreeBottomLeaves"> </Group>
+                </Transform>
+            </Group>
+
+            <Group DEF="higherTree">
+                <Transform translation='0 0.3 0'>
+                    <Shape>
+                        <Appearance>
+                            <CommonSurfaceShader>
+                                <ImageTexture containerField="diffuseTexture" url="../media/treeTrunk.jpg"></ImageTexture>
+                            </CommonSurfaceShader>
+                        </Appearance>
+                        <Cone bottomRadius='0.2' height='1.5' side='true' topRadius='0.15'/>
+                    </Shape>
+                </Transform>
+
+                <!-- Leaves -->
+                <Transform translation='0 1.5 0'>
+                    <Shape>
+                        <Appearance>
+                            <CommonSurfaceShader>
+                                <ImageTexture containerField="diffuseTexture" url="../media/treeLeaves2.jpg"></ImageTexture>
+                            </CommonSurfaceShader>
+                        </Appearance>
+                        <Sphere radius='0.5'/>
+                    </Shape>
+                </Transform>
+
+                <Transform translation='0 2.0 0'>
+                    <Group USE="BiggerTreeBottomLeaves"> </Group>
+                </Transform>
+ 
+                <Transform translation='0 2.5 0'>
+                    <Group USE="BiggerTreeBottomLeaves"> </Group>
+                </Transform>
+
+            </Group>
+        </Switch>
+
+
+
+        <transform id = "treesID" translation="0 0 0">
+            <Transform translation="17 -0.07 3" scale="0.5 0.5 0.5">
+                <Group USE="smallTree"> </Group>
+            </Transform>
+
+            <Transform translation="13 -0.07 12" scale="0.5 0.5 0.5">
+                <Group USE="smallTree"> </Group>
+            </Transform>
+
+            <Transform translation="13 -0.07 10" scale="0.5 0.5 0.5">
+                <Group USE="smallTree"> </Group>
+            </Transform>
+
+            <Transform translation="13 -0.07 8" scale="0.5 0.5 0.5">
+                <Group USE="smallTree"> </Group>
+            </Transform>
+
+            <Transform translation="10 -0.07 4" scale="0.5 0.5 0.5">
+                <Group USE="smallTree"> </Group>
+            </Transform>
+            
+            <Transform translation="4 -0.07 10" scale="0.5 0.5 0.5">
+                <Group USE="smallTree"> </Group>
+            </Transform>
+
+            <Transform translation="4 0.15 4" scale="1.5 1.5 1.5">
+                <Group USE="smallTree"> </Group>
+            </Transform>
+    
+            <Transform translation="11 0.15 1" scale="1.5 1.5 1.5">
+                <Group USE="smallTree"> </Group>
+            </Transform>
+
+            <Transform translation="1 0.15 11" scale="1.5 1.5 1.5">
+                <Group USE="smallTree"> </Group>
+            </Transform>
+
+            <Transform translation="1 -0.07 5" scale="0.5 0.5 0.5">
+                <Group USE="smallTree"> </Group>
+            </Transform>
+
+            <Transform translation="13 -0.07 17" scale="0.5 0.5 0.5">
+                <Group USE="smallTree"> </Group>
+            </Transform>
+
+            <Transform translation="17 0 2">
+                <Group USE="smallTree"> </Group>
+            </Transform>
+
+            <Transform translation="2 0 17">
+                <Group USE="smallTree"> </Group>
+            </Transform>
+
+            <Transform translation="18 0 5" scale="0.5 0.5 0.5">
+                <Transform USE="higherTree"/>
+            </Transform>
+
+            <Transform translation="19 0 2" scale="0.5 0.5 0.5">
+                <Transform USE="higherTree"/>
+            </Transform>
+
+            <Transform translation="16 0 16" scale="0.5 0.5 0.5">
+                <Transform USE="higherTree"/>
+            </Transform>
+
+            <Transform translation="8 -0.08 16" scale="0.5 0.5 0.5">
+                <Transform USE="higherTree"/>
+            </Transform> 
+        
+            <Transform translation="19 0.05 19" scale="0.9 0.9 0.9">
+                <Transform USE="higherTree"/>
+            </Transform>
+        </transform>
+    </Scene>
+</X3D>

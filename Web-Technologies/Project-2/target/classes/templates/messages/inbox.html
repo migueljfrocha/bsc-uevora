@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head('Mensagens Recebidas')}"></head>
+<body>
+    <header th:replace="~{fragments/layout :: header(${user})}"></header>
+    
+    <main>
+        <h1 class="page-title">Mensagens Recebidas</h1>
+        
+        <div th:if="${messages != null && messages.hasContent()}" class="messages-list">
+            <div th:each="message : ${messages.content}" class="message-item">
+                <div class="message-header">
+                    <span class="message-sender" th:text="'De: ' + ${message.userFrom.name}">De: Utilizador</span>
+                    <span class="message-date" th:text="${#temporals.format(message.sentAt, 'dd/MM/yyyy HH:mm')}">01/01/2025</span>
+                </div>
+                
+                <div class="message-ad">
+                    Referente ao anúncio: 
+                    <a th:href="@{/ads/{id}(id=${message.advertisement.id})}" 
+                       th:text="${message.advertisement.roomType} + ' - ' + ${message.advertisement.location}">
+                        Anúncio
+                    </a>
+                </div>
+                
+                <div class="message-content" th:text="${message.content}">
+                    Conteúdo da mensagem
+                </div>
+            </div>
+        </div>
+        
+        <div th:if="${messages == null || !messages.hasContent()}" class="empty-state">
+            <h3>Sem Mensagens</h3>
+            <p>Ainda não recebeu nenhuma mensagem.</p>
+            <a th:href="@{/ads/offer}" class="btn btn-primary">Ver Ofertas</a>
+            <a th:href="@{/ads/seeking}" class="btn btn-secondary">Ver Procuras</a>
+        </div>
+        
+        <!-- Pagination -->
+        <div th:if="${messages != null && messages.hasContent()}" 
+             th:replace="~{fragments/layout :: pagination(${messages}, ${baseUrl}, null, null)}">
+        </div>
+    </main>
+    
+    <div th:replace="~{fragments/layout :: scripts}"></div>
+</body>
+</html>

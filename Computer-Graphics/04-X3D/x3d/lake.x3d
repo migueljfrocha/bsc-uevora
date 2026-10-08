@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE X3D 
+    PUBLIC 
+    "ISO//Web3D//DTD X3D 3.3//EN" 
+    "http://www.web3d.org/specifications/x3d-4.0.dtd">
+<X3D 
+    profile="Full" 
+    version="4.0" 
+    xmlns:xsd="https://www.w3.org/TR/xmlschema-1/" 
+    xsd:noNamespaceSchemaLocation="http://www.web3d.org/specifications/x3d-4.0.xsd">
+    <Scene>
+        <transform id="lakeID" >
+            <transform translation='0 0 0'> 
+                <Shape>
+                    <Appearance>
+                        <CommonSurfaceShader>
+                            <ImageTexture containerField="diffuseTexture" url="../media/Lake_diffuse.jpg"></ImageTexture>
+                            <ImageTexture containerField="specularTexture" url="../media/Lake_specular.png"></ImageTexture>    
+                            <ImageTexture containerField="normalTexture" url="../media/Lake_normal.png"></ImageTexture>    
+                        </CommonSurfaceShader>
+                        </Appearance>
+        
+                        <ElevationGrid height=' 0.0  0.0  0.0  0.0  0.0 -0.0  0.0
+                                                0.0 -0.5 -0.5 -0.5 -0.5 -0.5  0.0
+                                                0.0 -0.5 -1.5 -1.5 -1.5 -0.5  0.0
+                                                0.0 -0.5 -1.5 -2.5 -1.5 -0.5  0.0
+                                                0.0 -0.5 -1.5 -3.0 -1.5 -0.5  0.0
+                                                0.0 -0.5 -1.5 -2.5 -1.5 -0.5  0.0 
+                                                0.0 -0.5 -1.5 -1.5 -1.5 -0.5  0.0
+                                                0.0 -0.5 -0.5 -0.5 -0.5 -0.5  0.0
+                                                0.0  0.0  0.0  0.0  0.0  0.0  0.0' 
+                                        solid='true' xDimension='7' zDimension='9' xSpacing='1' zSpacing='1'/>
+                </Shape>
+            </transform>
+        </transform>
+    </Scene>
+</X3D>

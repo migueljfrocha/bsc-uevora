@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head('Painel de Administração')}"></head>
+<body>
+    <header th:replace="~{fragments/layout :: header(${user})}"></header>
+    
+    <main>
+        <h1 class="page-title">Painel de Administração</h1>
+        
+        <div class="admin-panel">
+            <div class="admin-card">
+                <h3>Gestão de Anúncios</h3>
+                <p>Ativar ou desativar anúncios publicados na plataforma</p>
+                <a th:href="@{/admin/manage-ads}" class="btn btn-primary">Gerir Anúncios</a>
+            </div>
+            
+            <div class="admin-card">
+                <h3>Gestão de Utilizadores</h3>
+                <p>Aprovar utilizadores pendentes de registo</p>
+                <a th:href="@{/admin/manage-users}" class="btn btn-primary">Gerir Utilizadores</a>
+            </div>
+        </div>
+    </main>
+    
+    <div th:replace="~{fragments/layout :: scripts}"></div>
+</body>
+</html>

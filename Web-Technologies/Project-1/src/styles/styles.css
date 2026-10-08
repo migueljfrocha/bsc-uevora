@@ -1,0 +1,223 @@
+/* styles.css */
+
+/******************* CSS Variables *******************/
+:root {
+  --color-light-green: #d8efd3;
+  --color-medium-green: #95d2b3;
+  --color-dark-green: #55ad9b;
+  --color-very-light-green: #f1f8e8;
+
+  --color-link-hover: #b0ebb4;
+}
+
+
+/******************* Global Styles *******************/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  background-color: var(--color-very-light-green);
+  flex-direction: column;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.highlight-header-a {
+  background-color: var(--color-dark-green) !important;
+}
+
+#content {
+  margin: auto 0;
+}
+
+/******************* Navigation Bar *******************/
+nav {
+  background-color: var(--color-medium-green);
+  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.1);
+  font-size: 1.2em;
+  margin-bottom: 1.5em;
+}
+nav ul {
+  width: 100%;
+  list-style: none; /* Remove default list styling */
+  display: flex;
+  justify-content: flex-end; /* Align items to the right */
+  align-items: center;
+}
+nav li {
+  height: 6em;
+}
+
+nav a,
+nav div {
+  height: 100%;
+  padding: 0 30px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  color: black;
+}
+nav a:hover {
+  background-color: var(--color-light-green);
+}
+
+#logo:hover {
+  background-color: var(--color-medium-green);
+  cursor: pointer;
+}
+
+/* The first list item (logo) */
+nav li:first-child {
+  margin-right: auto; /* Push the logo to the far left */
+}
+
+#logo img {
+  height: 90%;
+}
+
+/*********** Burger Bar ***********/
+
+.burgerbar {
+  position: fixed; /* Fix the position to the viewport */
+  top: 0; /* Align to the top */
+  right: 0;
+  height: 100vh;
+  width: 250px;
+  background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent background */
+  backdrop-filter: blur(10px); /* Blur effect for background */
+  z-index: 999; /* Ensure it stays on top of everything */
+  box-shadow: -10px 0 15px rgba(0, 0, 0, 0.1);
+  display: none; /* Initially hidden */
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.burgerbar li,
+.burgerbar a,
+.burgerbar div {
+  width: 100%;
+}
+
+/* Responsive Design */
+#burger-button {
+  display: none; /* Hide burger button by default */
+}
+
+@media (min-width: 681px) {
+  .burgerbar {
+    display: none !important;
+  }
+}
+
+@media (max-width: 680px) {
+  #burger-button {
+    display: block; /* Show burger button on smaller screens */
+  }
+  .hiddenOn600 {
+    /* Class to hide elements on smaller screens */
+    display: none;
+  }
+}
+@media (max-width: 400px) {
+  .burgerbar {
+    width: 100%;
+  }
+}
+
+/******************* Footer *******************/
+footer {
+  width: 100%; 
+  margin-top: auto; /* Push the footer to the bottom */
+  background-color: var(--color-medium-green);
+  /* box-shadow: <offset-x> <offset-y> <blur-radius> <spread-radius> <color> */
+  box-shadow: 0px -3px 6px rgba(0, 0, 0, 0.1);
+  padding: 10px 0;
+}
+#footer-row {
+  display: flex;
+  width: 100%;
+  max-width: 1200px; /* Limit the maximum width */
+  margin: 0 auto;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 20px 0;
+}
+.footer-col {
+  max-width: 25%;
+}
+
+.footer-col h4 {
+  font-size: large;
+  display: flex;
+  justify-content: flex-start;
+  margin: 15px 0;
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-col li {
+  display: flex;
+  justify-content: flex-start; /* Align items horizontally to the start */
+  padding: 5px 0;
+  align-items: center;
+  text-align: left; 
+  overflow-wrap: break-word; /* Ensure long words break to the next line */
+  hyphens: auto; /* Enable hyphenation for better word breaking */
+}
+.footer-col li svg {
+  margin-right: 10px; /* Space between icon and text */
+}
+.footer-col a {
+  text-decoration: none; /* Remove underline from links */
+  color: black; 
+}
+
+#uevora-logo {
+  height: 50px;
+  margin-right: 10px;
+}
+
+/*2 columns per row */
+@media (max-width: 850px) {
+  #footer-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Exactly 2 columns */
+    justify-items: center;
+    align-items: start;
+  }
+  .footer-col {
+    max-width: 100%;
+    margin-bottom: 20px;
+    padding: 0 10px;
+  }
+  .footer-col li {
+    justify-content: center;
+    text-align: center;
+  }
+  .footer-col h4 {
+    justify-content: center;
+  }
+}
+
+/* 1 column */
+@media (max-width: 625px) {
+  #footer-row {
+    grid-template-columns: 1fr; /* Single column */
+  }
+  .footer-col {
+    max-width: 90%;
+    margin: 0 auto 20px auto;
+  }
+}

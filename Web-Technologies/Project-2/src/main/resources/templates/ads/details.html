@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head('Detalhes do Anúncio')}"></head>
+<body>
+    <header th:replace="~{fragments/layout :: header(${user})}"></header>
+    
+    <main>
+        <!-- Success/Error Messages -->
+        <div th:if="${success}" class="alert alert-success" th:text="${success}"></div>
+        <div th:if="${error}" class="alert alert-error" th:text="${error}"></div>
+        
+        <div class="details-container" th:if="${ad != null}">
+            <div class="details-header">
+                <div>
+                    <h1 class="details-title" th:text="${ad.roomType}">Tipo de Quarto</h1>
+                    <span class="badge advertisement-style" 
+                          th:text="${ad.adType.name() == 'OFFER'} ? 'Oferta' : 'Procura'">
+                    </span>
+                    <span class="badge"
+                          th:classappend="${ad.status.name() == 'ACTIVE'} ? 'badge-active' : 'badge-inactive'"
+                          th:text="${ad.status.name() == 'ACTIVE'} ? 'Ativo' : 'Inativo'">
+                    </span>
+                </div>
+                <div>
+                    <span class="price" th:text="${#numbers.formatDecimal(ad.price, 1, 2)} + ' €/mês'">0.00 €</span>
+                </div>
+            </div>
+            
+            <div class="details-grid">
+                <div class="detail-item">
+                    <span class="detail-label">Localização</span>
+                    <span class="detail-value location" th:text="${ad.location}">Localização</span>
+                </div>
+                
+                <div class="detail-item">
+                    <span class="detail-label">Género Preferido</span>
+                    <span class="detail-value">
+                        <span class="badge" 
+                              th:classappend="${ad.gender.name() == 'MALE'} ? 'badge-male' : (${ad.gender.name() == 'FEMALE'} ? 'badge-female' : 'badge-indifferent')"
+                              th:text="${ad.gender.name() == 'MALE'} ? 'Masculino' : (${ad.gender.name() == 'FEMALE'} ? 'Feminino' : 'Indiferente')">
+                        </span>
+                    </span>
+                </div>
+                
+                <div class="detail-item">
+                    <span class="detail-label">Contacto</span>
+                    <span class="detail-value" th:text="${ad.contact}">Contacto</span>
+                </div>
+                
+                <div class="detail-item">
+                    <span class="detail-label">Anunciante</span>
+                    <span class="detail-value" th:text="${ad.advertiser.name}">Nome do Anunciante</span>
+                </div>
+                
+                <div class="detail-item">
+                    <span class="detail-label">Data de Criação</span>
+                    <span class="detail-value" th:text="${#temporals.format(ad.createdAt, 'dd/MM/yyyy HH:mm')}">01/01/2025</span>
+                </div>
+            </div>
+            
+            <div class="details-description">
+                <h3>Descrição</h3>
+                <p th:text="${ad.description}">Descrição detalhada do anúncio</p>
+            </div>
+        </div>
+        
+        <!-- Message Form (only for authenticated users) -->
+        <div th:if="${isAuthenticated}" class="message-form-container">
+            <h3>Enviar Mensagem ao Anunciante</h3>
+            <form th:action="@{/messages}" 
+                  th:object="${messageForm}" 
+                  method="post"
+                  novalidate>
+                
+                <input type="hidden" th:field="*{advertisementId}">
+                
+                <div class="form-group">
+                    <label for="content" class="form-label required">Mensagem</label>
+                    <textarea id="content" 
+                              th:field="*{content}" 
+                              class="form-control"
+                              th:classappend="${#fields.hasErrors('content')} ? 'error' : ''"
+                              rows="5"
+                              required
+                              minlength="10"
+                              maxlength="300"
+                              placeholder="Escreva a sua mensagem..."></textarea>
+                    <span th:if="${#fields.hasErrors('content')}" 
+                          th:errors="*{content}" 
+                          class="error-message"></span>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Enviar Mensagem</button>
+            </form>
+        </div>
+        
+        <div th:if="${!isAuthenticated}" class="message-form-container text-center">
+            <p>Para enviar uma mensagem ao anunciante, por favor <a th:href="@{/login}">faça login</a> ou <a th:href="@{/register}">registe-se</a>.</p>
+        </div>
+        
+        <div class="text-center add-margin-top">
+            <a th:href="@{/ads/offer}" class="btn btn-secondary" th:if="${ad.adType.name() == 'OFFER'}">Voltar às Ofertas</a>
+            <a th:href="@{/ads/seeking}" class="btn btn-secondary" th:if="${ad.adType.name() == 'SEARCH'}">Voltar às Procuras</a>
+        </div>
+    </main>
+    
+    <div th:replace="~{fragments/layout :: scripts}"></div>
+</body>
+</html>

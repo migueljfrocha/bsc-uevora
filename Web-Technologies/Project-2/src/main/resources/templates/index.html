@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head('Início - Anúncios de Quartos')}"></head>
+<body>
+    <header th:replace="~{fragments/layout :: header(${user})}"></header>
+    
+    <main>
+        <h1 class="page-title">Bem-vindo aos Anúncios de Quartos</h1>
+        <p class="text-center add-margin-bottom" style="color: var(--text-light); font-size: 1.1rem;">
+            Encontre o quarto ideal para si ou anuncie o seu
+        </p>
+        
+        <!-- Ofertas de Quartos -->
+        <section class="add-margin-bottom">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                <h2 style="color: var(--secondary-color); font-size: 1.5rem;">
+                    Últimas Ofertas de Quartos
+                </h2>
+                <a th:href="@{/ads/offer}" class="btn btn-secondary">Ver Todas</a>
+            </div>
+            
+            <div th:if="${offerAds != null && !offerAds.isEmpty()}" class="cards-container">
+                <div th:each="ad : ${offerAds}" class="card">
+                    <div class="card-header">
+                        <span class="badge advertisement-style">Oferta</span>
+                        <span class="price" th:text="${#numbers.formatDecimal(ad.price, 1, 2)} + ' €'">0.00 €</span>
+                    </div>
+                    
+                    <div class="card-body">
+                        <h3 class="card-title" th:text="${ad.roomType}">Tipo de Quarto</h3>
+                        <p class="location">
+                            <svg xmlns="http://www.w3.org/2000/svg" 
+                                    height="20px" 
+                                    viewBox="0 -960 960 960" 
+                                    width="20px" fill="#000000">
+                            <path d="M480.21-480Q510-480 531-501.21t21-51Q552-582 530.79-603t-51-21Q450-624 429-602.79t-21 51Q408-522 429.21-501t51 21ZM480-191q119-107 179.5-197T720-549q0-105-68.5-174T480-792q-103 0-171.5 69T240-549q0 71 60.5 161T480-191Zm0 95Q323.03-227.11 245.51-339.55 168-452 168-549q0-134 89-224.5T479.5-864q133.5 0 223 90.5T792-549q0 97-77 209T480-96Zm0-456Z"/>
+                            </svg>
+                            <span th:text="${ad.location}">Localização</span>
+                        </p>
+                        <div class="card-gender">
+                            <span class="badge" 
+                                  th:classappend="${ad.gender.name() == 'MALE'} ? 'badge-male' : (${ad.gender.name() == 'FEMALE'} ? 'badge-female' : 'badge-indifferent')"
+                                  th:text="${ad.gender.name() == 'MALE'} ? 'Masculino' : (${ad.gender.name() == 'FEMALE'} ? 'Feminino' : 'Indiferente')">
+                            </span>
+                        </div>
+                        
+
+                    </div>
+                    
+                    <div class="card-footer">
+                        <small style="color: var(--text-light);">
+                            Por <span th:text="${ad.advertiser.name}">Anunciante</span>
+                        </small>
+                        <a th:href="@{/ads/{id}(id=${ad.id})}" class="btn btn-sm btn-primary">Ver Detalhes</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div th:if="${offerAds == null || offerAds.isEmpty()}" class="empty-state">
+                <p>Não há ofertas de quartos disponíveis no momento.</p>
+                <a th:href="@{/ads/create}" class="btn btn-primary" th:if="${user != null}">Criar Anúncio</a>
+            </div>
+        </section>
+        
+        <!-- Procuras de Quartos -->
+        <section class="add-margin-bottom">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                <h2 style="color: var(--secondary-color); font-size: 1.5rem;">
+                    Últimas Procuras de Quartos
+                </h2>
+                <a th:href="@{/ads/seeking}" class="btn btn-secondary">Ver Todas</a>
+            </div>
+            
+            <div th:if="${searchAds != null && !searchAds.isEmpty()}" class="cards-container">
+                <div th:each="ad : ${searchAds}" class="card">
+                    <div class="card-header">
+                        <span class="badge advertisement-style">Procura</span>
+                        <span class="price" th:text="${#numbers.formatDecimal(ad.price, 1, 2)} + ' €'">0.00 €</span>
+                    </div>
+                    
+                    <div class="card-body">
+                        <h3 class="card-title" th:text="${ad.roomType}">Tipo de Quarto</h3>
+                        <p class="location">
+                            <svg xmlns="http://www.w3.org/2000/svg" 
+                                    height="20px" 
+                                    viewBox="0 -960 960 960" 
+                                    width="20px" fill="#000000">
+                            <path d="M480.21-480Q510-480 531-501.21t21-51Q552-582 530.79-603t-51-21Q450-624 429-602.79t-21 51Q408-522 429.21-501t51 21ZM480-191q119-107 179.5-197T720-549q0-105-68.5-174T480-792q-103 0-171.5 69T240-549q0 71 60.5 161T480-191Zm0 95Q323.03-227.11 245.51-339.55 168-452 168-549q0-134 89-224.5T479.5-864q133.5 0 223 90.5T792-549q0 97-77 209T480-96Zm0-456Z"/>
+                            </svg>
+                            <span th:text="${ad.location}">Localização</span>
+                        </p>
+                        <div class="card-gender">
+                            <span class="badge" 
+                                  th:classappend="${ad.gender.name() == 'MALE'} ? 'badge-male' : (${ad.gender.name() == 'FEMALE'} ? 'badge-female' : 'badge-indifferent')"
+                                  th:text="${ad.gender.name() == 'MALE'} ? 'Masculino' : (${ad.gender.name() == 'FEMALE'} ? 'Feminino' : 'Indiferente')">
+                            </span>
+                        </div>
+                        
+                    </div>
+                    
+                    <div class="card-footer">
+                        <small style="color: var(--text-light);">
+                            Por <span th:text="${ad.advertiser.name}">Anunciante</span>
+                        </small>
+                        <a th:href="@{/ads/{id}(id=${ad.id})}" class="btn btn-sm btn-primary">Ver Detalhes</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div th:if="${searchAds == null || searchAds.isEmpty()}" class="empty-state">
+                <p>Não há procuras de quartos disponíveis no momento.</p>
+                <a th:href="@{/ads/create}" class="btn btn-primary" th:if="${user != null}">Criar Anúncio</a>
+            </div>
+        </section>
+    </main>
+    
+    <footer th:replace="~{fragments/layout :: footer}"></footer>
+    
+    <div th:replace="~{fragments/layout :: scripts}"></div>
+</body>
+</html>

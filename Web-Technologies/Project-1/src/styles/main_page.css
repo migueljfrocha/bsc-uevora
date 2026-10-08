@@ -1,0 +1,69 @@
+/************** Main Page Cards **************/
+
+#welcome-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2em;
+  text-align: center;
+}
+
+/* Logo */
+#welcome-container img {
+  width: 180px;
+  margin-bottom: 1.5em;
+}
+
+/* "Bem-vindo ..." */
+#welcome-container h1 {
+  color: var(--color-dark-green);
+  font-size: 2.5em;
+  margin-bottom: 0.5em;
+}
+
+/* Mensagem */
+#welcome-container > p {
+  font-size: 1.2em;
+  color: #5f6368;
+  line-height: 1.6;
+  margin-bottom: 2em;
+}
+
+#main-page-cards-container {
+  display: flex;
+  gap: 1.5em;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 2em;
+}
+
+.main-page-card  {
+  flex: 1;
+  min-width: 200px;
+  max-width: 250px;
+  padding: 1.5em;
+  border: 1px solid var(--color-medium-green);
+  border-radius: 15px;
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  text-align: center;
+}
+
+.main-page-card svg {
+  display: block;
+  margin: 0 auto 1em auto;
+}
+
+.main-page-card h3 {
+  color: var(--color-dark-green);
+  margin: 0.5em 0;
+}
+
+.main-page-card p {
+  color: #5f6368;
+  font-size: 0.95em;
+}
+
+.main-page-card:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}

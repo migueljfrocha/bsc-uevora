@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>58501 - SVG </title>
+        <link rel="stylesheet" type="text/css" href="styles/styles.css" />
+        <script type="module" src="js/main.js" defer> </script>
+    </head>
+
+    <body>
+        <h1>Trabalho de 58501 - SVG</h1>
+
+        <div id="gameContainer"> </div>
+
+      
+        <div class="PlayerInputContainer">
+            <div class="input-group">
+                <label for="maxPVel">Velocidade máxima do jogador: </label>
+                <select class="maxVelInput" id="maxPVel">
+                    <option value="2.5">Lento</option>
+                    <option value="3">Médio</option>
+                    <option value="5">Rápido</option>
+                </select>
+            </div>
+        
+            <div class="input-group">
+                <label for="obstacleRate">Dificuldade: </label>
+                <select class="obstacleRInput" id="obstacleRate">
+                    <option value="300">Fácil</option>
+                    <option value="200">Normal</option>
+                    <option value="90">Difícil</option>
+                </select>
+            </div>
+        </div>        
+
+        <div class="mainPanel">
+            <div id="terminal"></div>
+            <button id="startButton">START</button>
+        </div>
+
+    </body>
+
+</html>
+

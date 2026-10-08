@@ -1,0 +1,213 @@
+/* Styles for cards and lists of offers and restaurants*/
+
+
+/* All Lists */
+
+#list-container {
+  max-width: 1200px;
+  margin: 1em auto;
+  margin: 0 auto 2em auto;
+  border: 1px solid var(--color-medium-green);
+  border-radius: 15px;
+  padding: 20px;
+  background-color: var(--color-light-green);
+}
+
+#list-container h1 {
+  margin: 1em 0 1.5em 1em;
+}
+
+hr {
+  margin-bottom: 1em;
+  color: var(--color-medium-green);
+}
+
+
+/*************** Generic (Restaurants, Clients) ***************/
+#generic-card-list {
+  list-style-type: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 1em 1em;
+}
+
+.generic-card {
+  margin: 0.5em 0.5em;
+  border: 1px solid var(--color-medium-green);
+  background: #fff;
+  border-radius: 15px;
+  padding: 1.5em;
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Spacing for all elements inside each restaurant card */
+.generic-card * {
+  margin: 0.5em 0;
+}
+
+.generic-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.generic-card-header h3 {
+  font-size: 1.3em;
+}
+
+.generic-id {
+  background: var(--color-medium-green);
+  color: #fff;
+  border-radius: 1000px;
+  padding: 0.2em 0.8em;
+  font-size: 0.8em;
+}
+
+.restaurant-maps a {
+  margin: 0.5em 0;
+  color: var(--color-dark-green);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+#list-menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 30px;
+  margin: 30px 1em 10px 1em;
+}
+#list-menu button {
+  background-color: var(--color-medium-green);
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+#list-menu button:hover {
+  background-color: var(--color-dark-green);
+}
+#list-menu button:disabled {
+  background-color: #ccc;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+#page-info {
+  font-size: 1.2em;
+}
+
+@media (max-width: 1250px) {
+  #list-container {
+    width: 90%;
+  }
+}
+
+@media (max-width: 700px) {
+  #generic-card-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/*************** Offers ***************/
+#offer-list {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 1em 1.5em;
+}
+#offer-list li {
+  display: flex;
+  flex-direction: column;
+}
+
+.offer-card {
+  margin: 0.5em;
+  min-height: 360px;
+  border: 1px solid var(--color-medium-green);
+  background: #fff;
+  border-radius: 15px;
+  padding: 1.5rem;
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+}
+.offer-card * {
+  margin: 0.2em 0 0.5em 0;
+}
+.offer-card img {
+  width: 100%;
+  max-height: 200px;
+  object-fit: cover; /* keep aspect ratio while filling */
+  border-radius: 15px;
+}
+
+.offer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.offer-header h3 {
+  font-size: 1.3em;
+  margin: 0;
+}
+
+.offer-id {
+  background: var(--color-medium-green);
+  color: #fff;
+  border-radius: 999px;
+  padding: 0.2em 0.8em;
+  font-size: 0.8em;
+}
+
+.offer-info {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Ensure it takes available space: for pushing .offer-units to bottom */
+}
+
+.offer-units {
+  background: var(--color-dark-green);
+  color: #fff;
+  border-radius: 1000px;
+  padding: 0.2rem 0.9rem;
+  margin-top: auto;
+  font-size: 1em;
+  font-weight: 600;
+  align-self: flex-end;
+}
+
+.offer-title h3 {
+  margin: 0;
+}
+
+.offer-restaurant-name {
+  margin: 0.3rem 0 0;
+  color: #9aa0a6;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 1000px) {
+  #offer-list {
+    display: flex;
+    flex-direction: column;
+    margin: auto 1.5em;
+  }
+  .offer-card {
+    display: flex;
+    flex-direction: column;
+  }
+  .offer-card img {
+    max-height: 200px;
+    height: 70%;
+    margin: auto;
+  }
+}
+
+@media (max-width: 400px) {
+  .offer-id {
+    display: none;
+  }
+}

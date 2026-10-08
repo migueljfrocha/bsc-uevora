@@ -1,0 +1,59 @@
+mua ste ficheiro contém uma lista de palavaras e símbolos, cujo objectivo é 
+verificar o funcionamento do programa spellchecker. 
+    Para tal, algumas destas words vão estar mal escritas, outras numa foreign language, etc...
+
+    Depende da forma como queremos tratar a cituação!
+
+    Citações/Quotes:
+    "The fear is the mind killer" -Frank Herbert, Dune
+    "Deixa que tudo te aconteça: a beleza e o assombro" -Rainer Maria Rilke
+    "E, no meio de um inverno, finalmente aprendi que havia dentro de mim um onvencível verão." - Albert Camus
+    "Qualque dia só nos dams com gatos." -Manuel de Freitas
+
+    "Quanto mais pesado for o fardo,
+    mais próxima da terra se encontra 
+    a nossa vida e mais real e verdadeira é.
+    Em contrapartida, a ausência total 
+    de fardo faz com que o ser humano
+    se trone mais leve do que o ar, 
+    fá-lo voar, afastar-se da terra,
+    do ser terrestre, torna-o semi-real
+    e os seus movimentos tão livres
+    quanto insignificantes. Que escolher,
+    então? O peso ou a leveza?" -Milan Kundera, Insustentável Leveza do Ser
+
+    "A cigarra, queimando-se em música,
+    ao camelo que mastiga a sua longa solidão,
+    ao passaro que procur no im do mundo,
+    ao boi que vai com inocência para a morte.
+
+    Sede assim qualquer coisa
+    serena, isenta, fiel.
+
+    Nã como o resto dos omens." -Cecília Meireles
+
+Será allors un caigud? Parlem ara?
+
+123+123=duzentos e quanrenta e_seis!!
+0,25.4/874->Maria<-noventa_e_nove
+
+fünftausendfünfhundertfünfundfünfzig = 5,555 (man kommer det att fungera?)
+
+possibly?...
+
+NOT AT ALL ou TALVEZ sim....
+
+No final sse verificará essa situazione.
+
+a e i o u 
+
+DET största portugisiska ordet: pneumoultramicroscopicossilicovulcanoconiótico!
+
+                                    65    20   trinta .... /*- 50 
+
+
+            568.478.hasta aqui_ 203/*KLM
+
+                        ------- O FINAL -------
+
+

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Salvar Comida - Login</title>
+
+    <link rel="stylesheet" href="../styles/styles.css" />
+    <link rel="stylesheet" href="../styles/login.css" />
+    
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul class="burgerbar">
+          <li onclick="hideBurgerbar()">
+            <div>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="26px"
+                viewBox="0 -960 960 960"
+                width="26px"
+                fill="#000000"
+              >
+                <path
+                  d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"
+                />
+              </svg>
+            </div>
+          </li>
+          <li><a href="index.html#restaurantes" onclick="hideBurgerbar()">Restaurantes</a></li>
+          <li><a href="index.html#ofertas" onclick="hideBurgerbar()">Ofertas</a></li>
+          <li><a href="login.html">Login</a></li>
+        </ul>
+        <ul>
+          <li>
+            <a href="index.html" id="logo">
+              <img
+                src="../assets/icons/salvar_comida160.png"
+                alt="Salvar Comida Logo"
+              />
+            </a>
+          </li>
+          <li class="hiddenOn600"><a href="index.html#restaurantes" >Restaurantes</a></li>
+          <li class="hiddenOn600"><a href="index.html#ofertas">Ofertas</a></li>
+          <li class="hiddenOn600"><a href="login.html">Login</a></li>
+          <li id="burger-button" onclick="showBurgerbar()">
+            <a href="#">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="33px"
+                viewBox="0 -960 960 960"
+                width="33px"
+                fill="#000000"
+              >
+                <path
+                  d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"
+                />
+              </svg>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <div id="login">
+      <h2>Autentique-se</h2>
+      <a class="login_btn" href="client.html">Cliente</a>
+      <a class="login_btn" href="restaurant.html">Restaurante</a>
+      <a class="login_btn" href="admin.html">Administrador</a>
+
+      <p>* Irá autenticar-se num utilizador aleatório</p>
+    </div>
+
+    <footer id="footer">
+      <div id="footer-row">
+        <div class="footer-col">
+          <h4>Sobre o trabalho</h4>
+          <ul>
+            <li>
+              Projeto desenvolvido no âmbito da unidade curricular de
+              Tecnologias Web da Universidade de Évora.
+            </li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Créditos</h4>
+          <ul>
+            <li>Miguel Pombeiro</li>
+            <li>Miguel Rocha</li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contactos</h4>
+          <ul>
+            <li>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="24px"
+                viewBox="0 -960 960 960"
+                width="24px"
+                fill="#0000000"
+              >
+                <path
+                  d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720v480q0 33-23.5 56.5T800-160H160Zm320-280L160-640v400h640v-400L480-440Zm0-80 320-200H160l320 200ZM160-640v-80 480-400Z"
+                />
+              </svg>
+              <a href="mailto:l57829@alunos.uevora.pt"
+                >l57829@alunos.uevora.pt</a
+              >
+            </li>
+            <li>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="24px"
+                viewBox="0 -960 960 960"
+                width="24px"
+                fill="#0000000"
+              >
+                <path
+                  d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720v480q0 33-23.5 56.5T800-160H160Zm320-280L160-640v400h640v-400L480-440Zm0-80 320-200H160l320 200ZM160-640v-80 480-400Z"
+                />
+              </svg>
+              <a href="mailto:l58501@alunos.uevora.pt"
+                >l58501@alunos.uevora.pt</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Com o apoio de:</h4>
+          <ul>
+            <li>
+              <a href="https://www.uevora.pt/" target="_blank">
+                <img
+                  id="uevora-logo"
+                  src="../assets/img/logo_horizontal_preto.png"
+                  alt="Universidade de Évora Logo"
+                />
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+
+    <script src="../js/base.js"></script>
+
+  </body>
+</html>

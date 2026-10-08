@@ -1,0 +1,129 @@
+/* ADMIN PAGE STYLES */
+
+.restaurant-admin,
+.restaurant-location,
+.restaurant-maps {
+  margin-top: 1em !important;
+  padding-top: 0.5em;
+}
+
+#list-filters,
+#offer-list-filters {
+  margin: 1em 1.5em;
+  padding: 1em 1.5em;
+  border: 1px solid var(--color-medium-green);
+  border-radius: 15px;
+  background-color: #fff;
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+}
+
+#offer-list-filters {
+  margin: 1em 2em;
+}
+
+#filter-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+  align-items: center;
+}
+
+#filter-form .form-group {
+  display: flex;
+  flex-direction: column;
+  min-width: 180px;
+}
+
+/* OFFER MEDIA QUERY */
+@media (max-width: 1000px) {
+  #filter-form {
+    max-width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+    align-items: center;
+  }
+
+  #filter-form .form-group {
+    min-width: 100%;
+  }
+
+  #filter-form button {
+    width: 100%;
+  }
+
+  .offer-card {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .offer-card img {
+    max-height: 200px;
+    height: 70%;
+    margin: auto;
+  }
+}
+
+/* Make the text input container grow more */
+#filter-form .form-group:has(input[type="text"]) {
+  /* Takes 3x the space */
+  flex: 3;
+}
+
+#filter-form .form-group:has(select) {
+  flex: 1;
+  /* Takes 1x the space */
+  max-width: 200px;
+}
+
+#filter-form input[type="text"],
+#filter-form select {
+  padding: 0.5em;
+  border-radius: 8px;
+  border: 1px solid var(--color-medium-green);
+  font-size: 1em;
+  font-family: inherit;
+  background-color: #fff;
+}
+
+#filter-form input[type="text"]:focus,
+#filter-form select:focus {
+  outline: none;
+  border-color: var(--color-dark-green);
+  box-shadow: 0 0 0 2px rgba(85, 173, 155, 0.1);
+}
+
+#filter-form button {
+  background-color: var(--color-medium-green);
+  color: black;
+  font-weight: 600;
+  padding: 0.8em 1.4em;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+}
+
+#filter-form button:hover {
+  background-color: var(--color-dark-green);
+  color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+}
+
+
+@media (max-width: 800px) {
+
+  #filter-form .form-group {
+    min-width: 100%;
+  }
+
+  #filter-form button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 400px) {
+  .generic-id {
+    display: none;
+  }
+}

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head('Pagamento - Anúncio Criado')}"></head>
+<body>
+    <header th:replace="~{fragments/layout :: header(${user})}"></header>
+    
+    <main>
+        <div class="payment-container" th:if="${payment != null && ad != null}">
+            <h1>
+                <svg height="32px" width="32px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <path class="st0" d="M469.402,35.492C334.09,110.664,197.114,324.5,197.114,324.5L73.509,184.176L0,254.336l178.732,222.172 l65.15-2.504C327.414,223.414,512,55.539,512,55.539L469.402,35.492z"></path> </g> </g></svg>
+            </h1>
+            <h2>Anúncio Criado com Sucesso!</h2>
+            <p style="color: var(--text-light); margin-bottom: 2rem;">
+                O seu anúncio foi criado e está pendente de aprovação pelo administrador.
+            </p>
+            
+            <div class="payment-details">
+                <h3>Dados de Pagamento Multibanco</h3>
+                <p style="color: var(--text-light); margin-bottom: 1.5rem;">
+                    Para ativar o seu anúncio, por favor efetue o pagamento através de Multibanco com os seguintes dados:
+                </p>
+                
+                <div class="payment-info">
+                    <div class="payment-info-item">
+                        <span class="payment-info-label">Entidade:</span>
+                        <span class="payment-info-value" th:text="${payment.mbEntity}">00000</span>
+                    </div>
+                    
+                    <div class="payment-info-item">
+                        <span class="payment-info-label">Referência:</span>
+                        <span class="payment-info-value" th:text="${payment.mbReference}">000 000 000</span>
+                    </div>
+                    
+                    <div class="payment-info-item">
+                        <span class="payment-info-label">Valor:</span>
+                        <span class="payment-info-value" th:text="${#numbers.formatDecimal(payment.mbAmount, 1, 2)} + ' €'">0.00 €</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="background-color: var(--bg-color); padding: 1.5rem; border-radius: 8px; margin-top: 2rem;">
+                <h3 style="color: var(--primary-color); margin-bottom: 1rem;">Detalhes do Anúncio</h3>
+                <div style="text-align: left;">
+                    <p><strong>Tipo:</strong> 
+                        <span class="badge advertisement-style" 
+                              th:text="${ad.adType.name() == 'OFFER'} ? 'Oferta' : 'Procura'">
+                        </span>
+                    </p>
+                    <p><strong>Quarto:</strong> <span th:text="${ad.roomType}">Tipo de Quarto</span></p>
+                    <p><strong>Localização:</strong> <span th:text="${ad.location}">Localização</span></p>
+                    <p><strong>Preço:</strong> <span th:text="${#numbers.formatDecimal(ad.price, 1, 2)} + ' €/mês'">0.00 €</span></p>
+                </div>
+            </div>
+            
+            <div style="margin-top: 2rem;">
+                <a th:href="@{/}" class="btn btn-secondary">Voltar ao Início</a>
+            </div>
+            
+            <div class="payment-warning">
+                <p>
+                    <strong>Nota:</strong> O seu anúncio ficará visível apenas após a aprovação do administrador e confirmação do pagamento.
+                </p>
+            </div>
+        </div>
+    </main>
+    
+    <div th:replace="~{fragments/layout :: scripts}"></div>
+</body>
+</html>

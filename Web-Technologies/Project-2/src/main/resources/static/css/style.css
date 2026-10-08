@@ -1,0 +1,936 @@
+/*************** Variables ***************/
+:root {
+    --primary-color: #68A691;
+    --primary-dark: #104547;
+    --primary-light: #CADBC8;
+    --secondary-color: #9C9583;
+    --secondary-dark: #5E5B52;
+    --secondary-light: #E2D4B7;
+    --bg-color: #F5F7FA;
+    --card-bg: #FFFFFF;
+    --text-color: #2E3440;
+    --text-light: #4C566A;
+    --border-color: #D8DEE9;
+    --success-color: #54BE54;
+    --error-color: #CF4B47; 
+    --shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    --shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/*************** Base ***************/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+main {
+    flex: 1;
+    max-width: 1200px;
+    width: 100%;
+    margin: 2rem auto;
+    padding: 0 2rem;
+}
+
+.page-title {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+/*************** Header ***************/
+header {
+    background-color: var(--primary-color);
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 1000; 
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.site-title {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+}
+
+/*************** Nav Bar ***************/
+nav {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+nav a, nav button {
+    color: white;
+    padding: 0.5rem 1rem;
+    display: block;
+}
+
+
+nav a:hover {
+    background-color: var(--primary-dark);
+    border-radius: 6px;
+}
+
+
+/*************** Burguer Menu ***************/
+
+.burger-menu {
+    display: none;
+    background: none;
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+    color: inherit;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+}
+
+.burger-menu .icon {
+    width: 28px;
+    height: 28px;
+    display: block;
+}
+
+.burger-menu .icon-close {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.burger-menu .icon-menu {
+    opacity: 1;
+}
+
+.burger-menu.active .icon-menu {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.burger-menu.active .icon-close {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+    pointer-events: auto;
+}
+
+
+/*************** Cards ***************/
+
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.card {
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border-color);
+}
+
+.card:hover {
+    box-shadow: var(--shadow-hover);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    font-weight: 600;
+    margin-bottom: 0.5em;
+}
+
+.card-body {
+    margin-bottom: 1rem;
+}
+
+.card-gender {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.card-gender span {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    margin: 1em 0;
+}
+
+
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+}
+
+
+
+/*************** Badge ***************/
+
+.badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border-radius: 12px;
+    text-transform: uppercase;
+}
+
+.advertisement-style {
+    background-color: #DAFFEF;
+    color: #1EA896;
+}
+
+.badge-active {
+    background-color: #E8F5E9;
+    color: #388E3C;
+}
+
+.badge-inactive {
+    background-color: #FFEBEE;
+    color: #D32F2F;
+}
+
+.badge-male {
+    background-color: #E3F2FD;
+    color: #1976D2;
+}
+
+.badge-female {
+    background-color: #FCE4EC;
+    color: #E75A7C;
+}
+
+.badge-indifferent {
+    background-color: #F5F5F5;
+    color: #616161;
+}
+
+
+/*************** Buttons ***************/
+.btn {
+    display: inline-block;
+    padding: 0.6rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    text-align: center;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-dark);
+    color: white;
+}
+
+.btn-secondary {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: var(--secondary-dark);
+    color: white;
+}
+
+.btn-success {
+    background-color: var(--success-color);
+    color: white;
+}
+
+.btn-success:hover {
+    background-color: #4CAE4C;
+    color: white;
+}
+
+.btn-danger {
+    background-color: var(--error-color);
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #C9302C;
+    color: white;
+}
+
+.btn-block {
+    display: block;
+    width: 100%;
+    margin-top: 0.8rem;
+}
+
+.btn-sm {
+    padding: 0.4rem 1rem;
+    font-size: 0.9rem;
+}
+
+a.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.463rem 1.2rem;
+}
+
+/*************** Forms ***************/
+.form-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: var(--card-bg);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.form-label.required::after {
+    content: ' *';
+    color: var(--error-color);
+}
+
+.form-control {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(74, 95, 157, 0.1);
+}
+
+.form-control.error {
+    border-color: var(--error-color);
+}
+
+.form-control.error:focus {
+    box-shadow: 0 0 0 3px rgba(217, 83, 79, 0.1);
+}
+
+.error-message {
+    color: var(--error-color);
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+    display: block;
+}
+
+textarea.form-control {
+    resize: vertical;
+    min-height: 100px;
+}
+
+select.form-control {
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 12px;
+    padding-right: 2.5rem;
+}
+
+/*************** Filter Form ***************/
+.filter-form {
+    background-color: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow);
+    width: 100%;
+}
+
+.filter-form .form-row {
+    display: flex;
+    gap: 1rem;
+    align-items: end;
+    width: 100%;
+}
+
+.filter-form .form-group {
+    flex: 1;
+    margin-bottom: 0;
+}
+
+/*************** Alerts ***************/
+.alert {
+    padding: 1rem 1.5rem;
+    border-radius: 4px;
+    margin-bottom: 1.5rem;
+    border-left: 4px solid;
+}
+
+.alert-success {
+    background-color: #D4EDDA;
+    border-color: #28A745;
+    color: #155724;
+}
+
+.alert-error {
+    background-color: #F8D7DA;
+    border-color: #DC3545;
+    color: #721C24;
+}
+
+/*************** Tables (admin) ***************/
+
+.table-container {
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    overflow-x: auto;
+    margin-bottom: 2rem;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+th {
+    padding: 1rem;
+    text-align: left;
+    font-weight: 600;
+}
+
+td {
+    padding: 1rem;
+    border-top: 1px solid var(--border-color);
+}
+
+tbody tr:hover {
+    background-color: var(--bg-color);
+}
+
+/*************** Pagination ***************/
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+}
+
+.pagination a,
+.pagination span {
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    min-width: 40px;
+    text-align: center;
+}
+
+.pagination a:hover {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.pagination .active {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.pagination .disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/*************** Ad Details ***************/
+
+.details-container {
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: var(--shadow);
+    margin-bottom: 2rem;
+}
+
+.details-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.details-title {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.details-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.detail-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.detail-label {
+    font-weight: 600;
+    color: var(--text-light);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+}
+
+.detail-value {
+    font-size: 1.1rem;
+    color: var(--text-color);
+}
+
+.details-description {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.details-description h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.details-description p {
+    line-height: 1.8;
+    color: var(--text-color);
+}
+
+/*************** Message Form ***************/
+
+.message-form-container {
+    background-color: var(--bg-color);
+    padding: 2rem;
+    border-radius: 8px;
+    margin-top: 2rem;
+}
+
+.message-form-container h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+/*************** Message List ***************/
+
+.messages-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.message-item {
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+    border-left: 4px solid var(--primary-color);
+}
+
+.message-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.message-sender {
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.message-date {
+    font-size: 0.85rem;
+    color: var(--text-light);
+}
+
+.message-ad {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    margin-bottom: 1rem;
+}
+
+.message-content {
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/*************** Admin ***************/
+
+.admin-panel {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.admin-card {
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: var(--shadow);
+    text-align: center;
+    border-top: 4px solid var(--primary-color);
+}
+
+.admin-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
+}
+
+.admin-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.admin-card p {
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+}
+
+/*************** Footer ***************/
+
+footer {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 2rem 0;
+    margin-top: auto;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.footer-section h3 {
+    margin-bottom: 1rem;
+    color: white;
+}
+
+.footer-section p,
+.footer-section a {
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.8;
+}
+
+.footer-section a:hover {
+    color: white;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.8);
+}
+
+#uevora-logo {
+  height: 50px;
+  margin-right: 10px;
+}
+
+
+/*************** Payments ***************/
+
+.payment-container {
+    max-width: 600px;
+    margin: 2rem auto;
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: var(--shadow);
+    text-align: center;
+}
+
+.payment-container h2 {
+    color: var(--success-color);
+    margin-bottom: 1rem;
+}
+
+.payment-details {
+    background-color: var(--bg-color);
+    padding: 2rem;
+    border-radius: 8px;
+    margin: 2rem 0;
+}
+
+.payment-details h3 {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+}
+
+.payment-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    text-align: left;
+}
+
+.payment-info-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.75rem;
+    background-color: white;
+    border-radius: 4px;
+    border: 1px solid var(--border-color);
+}
+
+.payment-info-label {
+    font-weight: 600;
+    color: var(--text-light);
+}
+
+.payment-info-value {
+    font-family: monospace;
+    font-size: 1.1rem;
+    color: var(--primary-color);
+}
+
+.payment-warning {
+    margin-top: 2rem;
+    padding: 1rem;
+    background-color:
+    #fff3cd;
+    border-left: 4px solid #ffc107;
+    border-radius: 4px;
+    text-align: left;
+}
+
+.payment-warning p {
+    color: #856404;
+    margin: 0;
+}
+
+/*************** Empty states ***************/
+.empty-state {
+    text-align: center;
+    padding: 4rem 2rem;
+    color: var(--text-light);
+}
+
+.empty-state h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+}
+
+.empty-state p {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+}
+
+/*************** Media Queries ***************/
+
+@media (max-width: 950px){
+    .header-container {
+        padding: 1rem;
+    }
+
+    .site-title {
+        font-size: 1.4rem;
+    }
+
+    .burger-menu {
+        display: flex;
+    }
+
+    nav ul {
+        position: fixed;
+        top: 60px;
+        left: -100%;
+        width: 100%;
+        background-color: var(--primary-color);
+        flex-direction: column;
+        gap: 0;
+        padding: 1rem 0;
+        box-shadow: var(--shadow);
+    }
+
+    nav ul.active {
+        left: 0;
+    }
+
+    nav ul li {
+        width: 100%;
+    }
+
+    nav a {
+        padding: 1rem 2rem;
+        border-radius: 0;
+    }
+
+    main {
+        padding: 0 1rem;
+        margin: 1rem auto;
+    }
+
+    .page-title {
+        font-size: 1.5rem;
+    }
+
+}
+
+@media (max-width: 768px) {
+
+    .filter-form .form-row {
+        flex-direction: column;
+    }
+
+    .form-group {
+        width: 100%;
+    }
+
+    .details-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .pagination {
+        gap: 0.25rem;
+    }
+
+    .pagination a,
+    .pagination span {
+        padding: 0.4rem 0.8rem;
+        min-width: 35px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .site-title {
+        font-size: 1.2rem;
+    }
+
+    .form-container {
+        padding: 1.5rem;
+    }
+
+    .card {
+        padding: 1rem;
+    }
+
+    .details-container {
+        padding: 1.5rem;
+    }
+
+    .payment-container {
+        padding: 1.5rem;
+    }
+}
+
+/*************** Utilities ***************/
+.text-center {
+    text-align: center;
+}
+
+.add-margin-bottom {
+    margin-bottom: 1.5rem;
+}
+
+.add-margin-top {
+    margin-top: 1.5rem;
+}
+
+.price {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.location {
+    color: var(--text-light);
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}

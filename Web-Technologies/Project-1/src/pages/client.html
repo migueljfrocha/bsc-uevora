@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Salvar Comida - Cliente</title>
+
+  <link rel="stylesheet" href="../styles/styles.css">
+  <link rel="stylesheet" href="../styles/index_styles.css">
+  <link rel="stylesheet" href="../styles/main_page.css">
+  <link rel="stylesheet" href="../styles/admin.css">
+  <link rel="stylesheet" href="../styles/restaurant.css">
+  <link rel="stylesheet" href="../styles/client.css">
+</head>
+
+<body>
+  <header>
+    <nav>
+      <ul class="burgerbar">
+        <li onclick="hideBurgerbar()">
+          <div>
+            <svg xmlns="http://www.w3.org/2000/svg" height="26px" viewBox="0 -960 960 960" width="26px" fill="#000000">
+              <path
+                d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
+            </svg>
+          </div>
+        </li>
+        <li><a href="#restaurantesCliente" onclick="hideBurgerbar(); showRestaurantsClient()">Restaurantes</a></li>
+        <li><a href="#ofertasCliente" onclick="hideBurgerbar(); showOffersClient()">Ofertas</a></li>
+        <li><a href="index.html">Logout</a></li>
+      </ul>
+
+      <ul>
+        <li>
+          <a href="client.html" id="logo">
+            <img src="../assets/icons/salvar_comida160.png" alt="Salvar Comida Logo" />
+          </a>
+        </li>
+        <li class="hiddenOn600"><a href="#restaurantesCliente" onclick="showRestaurantsClient()">Restaurantes</a></li>
+        <li class="hiddenOn600"><a href="#ofertasCliente" onclick="showOffersClient()">Ofertas</a></li>
+        <li class="hiddenOn600"><a href="index.html">Logout</a></li>
+        <li id="burger-button" onclick="showBurgerbar()">
+          <a href="#">
+            <svg xmlns="http://www.w3.org/2000/svg" height="33px" viewBox="0 -960 960 960" width="33px" fill="#000000">
+              <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z" />
+            </svg>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+
+  <div id="content">
+    <div id="welcome-container">
+      <img src="../assets/icons/salvar_comida640.png" alt="Salvar Comida Logo" />
+      <h1>
+        Bem-vindo, caro Cliente!
+      </h1>
+      <p>
+        Utilize o menu de navegação para procurar restaurantes, ofertas, bem como reservar ofertas na plataforma Salvar
+        Comida.
+      </p>
+
+      <div id="main-page-cards-container">
+
+        <div class="main-page-card" onclick="showRestaurantsClient()">
+          <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#000000">
+            <path
+              d="M280-80v-366q-51-14-85.5-56T160-600v-280h80v280h40v-280h80v280h40v-280h80v280q0 56-34.5 98T360-446v366h-80Zm400 0v-320H560v-280q0-83 58.5-141.5T760-880v800h-80Z" />
+          </svg>
+          <h3>Restaurante</h3>
+          <p>Procure Restaurantes</p>
+        </div>
+
+        <div class="main-page-card" onclick="showOffersClient()">
+          <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#000000">
+            <path
+              d="M286.79-81Q257-81 236-102.21t-21-51Q215-183 236.21-204t51-21Q317-225 338-203.79t21 51Q359-123 337.79-102t-51 21Zm400 0Q657-81 636-102.21t-21-51Q615-183 636.21-204t51-21Q717-225 738-203.79t21 51Q759-123 737.79-102t-51 21ZM235-741l110 228h288l125-228H235Zm-30-60h589.07q22.97 0 34.95 21 11.98 21-.02 42L694-495q-11 19-28.56 30.5T627-453H324l-56 104h491v60H277q-42 0-60.5-28t.5-63l64-118-152-322H51v-60h117l37 79Zm140 288h288-288Z" />
+          </svg>
+          <h3>Ofertas</h3>
+          <p>Procure e Reserve Ofertas</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <footer id="footer">
+    <div id="footer-row">
+      <div class="footer-col">
+        <h4>Sobre o trabalho</h4>
+        <ul>
+          <li>
+            Projeto desenvolvido no âmbito da unidade curricular de
+            Tecnologias Web da Universidade de Évora.
+          </li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Créditos</h4>
+        <ul>
+          <li>Miguel Pombeiro</li>
+          <li>Miguel Rocha</li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contactos</h4>
+        <ul>
+          <li>
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#0000000">
+              <path
+                d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720v480q0 33-23.5 56.5T800-160H160Zm320-280L160-640v400h640v-400L480-440Zm0-80 320-200H160l320 200ZM160-640v-80 480-400Z" />
+            </svg>
+            <a href="mailto:l57829@alunos.uevora.pt">l57829@alunos.uevora.pt</a>
+          </li>
+          <li>
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#0000000">
+              <path
+                d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720v480q0 33-23.5 56.5T800-160H160Zm320-280L160-640v400h640v-400L480-440Zm0-80 320-200H160l320 200ZM160-640v-80 480-400Z" />
+            </svg>
+            <a href="mailto:l58501@alunos.uevora.pt">l58501@alunos.uevora.pt</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Com o apoio de:</h4>
+        <ul>
+          <li>
+            <a href="https://www.uevora.pt/" target="_blank">
+              <img id="uevora-logo" src="../assets/img/logo_horizontal_preto.png" alt="Universidade de Évora Logo" />
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/base.js"></script>
+  <script src="../js/client.js"></script>
+
+</body>
+
+</html>

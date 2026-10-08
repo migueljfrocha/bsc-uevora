@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head(${type} + ' de Quartos')}"></head>
+<body>
+    <header th:replace="~{fragments/layout :: header(${user})}"></header>
+    
+    <main>
+        <h1 class="page-title" th:text="${type} + ' de Quartos'">Anúncios</h1>
+        
+        <!-- Filter Form -->
+        <div class="filter-form">
+            <form th:action="${baseUrl}" method="get">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="filter" class="form-label">Filtrar por</label>
+                        <select id="filter" name="filter" class="form-control">
+                            <option value="location" th:selected="${filter == 'location'}">Localização</option>
+                            <option value="owner" th:selected="${filter == 'owner'}">Anunciante</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="value" class="form-label">Valor</label>
+                        <input type="text"
+                               id="value" 
+                               name="value" 
+                               class="form-control" 
+                               th:value="${value}"
+                               placeholder="Digite para filtrar">
+                    </div>
+                    
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Filtrar</button>
+                        <a th:href="${baseUrl}" class="btn btn-secondary">Limpar</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+        
+        <!-- Ads List -->
+        <div th:if="${adsPage != null && adsPage.hasContent()}" class="cards-container">
+            <div th:each="ad : ${adsPage.content}" class="card">
+                <div class="card-header">
+                    <span class="badge advertisement-style" 
+                          th:text="${ad.adType.name() == 'OFFER'} ? 'Oferta' : 'Procura'">
+                    </span>
+                    <span class="price" th:text="${#numbers.formatDecimal(ad.price, 1, 2)} + ' €'">0.00 €</span>
+                </div>
+                
+                <div class="card-body">
+                    <h3 class="card-title" th:text="${ad.roomType}">Tipo de Quarto</h3>
+                    <p class="location" th:text="${ad.location}">Localização</p>
+                    
+                    <div class="card-gender">
+                        <span class="badge" 
+                              th:classappend="${ad.gender.name() == 'MALE'} ? 'badge-male' : (${ad.gender.name() == 'FEMALE'} ? 'badge-female' : 'badge-indifferent')"
+                              th:text="${ad.gender.name() == 'MALE'} ? 'Masculino' : (${ad.gender.name() == 'FEMALE'} ? 'Feminino' : 'Indiferente')">
+                        </span>
+                    </div>
+                    
+
+                </div>
+                
+                <div class="card-footer">
+                    <small style="color: var(--text-light);">
+                        Por <span th:text="${ad.advertiser.name}">Anunciante</span>
+                    </small>
+                    <a th:href="@{/ads/{id}(id=${ad.id})}" class="btn btn-sm btn-primary">Ver Detalhes</a>
+                </div>
+            </div>
+        </div>
+        
+        <div th:if="${adsPage == null || !adsPage.hasContent()}" class="empty-state">
+            <h3>Nenhum anúncio encontrado</h3>
+            <p>Não há anúncios disponíveis com os filtros selecionados.</p>
+            <a th:href="${baseUrl}" class="btn btn-primary">Ver Todos</a>
+        </div>
+        
+        <!-- Pagination -->
+        <div th:if="${adsPage != null && adsPage.hasContent()}" 
+             th:replace="~{fragments/layout :: pagination(${adsPage}, ${baseUrl}, ${filter}, ${value})}">
+        </div>
+    </main>
+    
+    <div th:replace="~{fragments/layout :: scripts}"></div>
+</body>
+</html>

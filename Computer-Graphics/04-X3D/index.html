@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <script src="lib/x3dom/x3dom-full.js"></script>
+    <link rel='stylesheet' type='text/css' href='lib/x3dom/x3dom.css' />
+    <link rel='stylesheet' type='text/css' href='styles/styles.css' />
+    <script src="js/main.js"></script>
+    <title>58501 - X3D</title>
+</head>
+<body>
+    <div id="x3d-container">
+        <h1>Trabalho de 58501 - X3D</h1>
+        <x3d id="s" width="700px" height="700px">
+            <scene id="scene">
+                <inline id="treesObject" nameSpaceName="X3D" mapDEFToID="true" url="x3d/trees.x3d"></inline>
+                <inline id="mountainObject" nameSpaceName="X3D" mapDEFToID="true" url="x3d/mountain.x3d"></inline>
+                <inline id="backgroundObject" nameSpaceName="X3D" mapDEFToID="true" url="x3d/background.x3d"></inline>
+                <inline id="sunObject" nameSpaceName="X3D" mapDEFToID="true" url="x3d/sun.x3d"></inline> 
+                <inline id="lakeObject" nameSpaceName="X3D" mapDEFToID="true" url="x3d/lake.x3d"></inline>
+            </scene>
+        </x3d>
+    </div>
+
+    <div id="terminal"></div>
+
+    <script>
+        main();
+    </script>
+</body>
+
+</html>

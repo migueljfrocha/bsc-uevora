@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE X3D 
+    PUBLIC 
+    "ISO//Web3D//DTD X3D 3.3//EN" 
+    "http://www.web3d.org/specifications/x3d-4.0.dtd">
+<X3D 
+    profile='Full' 
+    version='4.0'     
+    xmlns:xsd="https://www.w3.org/TR/xmlschema-1/" 
+    xsd:noNamespaceSchemaLocation="http://www.web3d.org/specifications/x3d-4.0.xsd">
+<Scene>
+    <Switch whichChoice="-1">
+        <Sphere DEF="sunGeom" radius="1"></Sphere>
+    </Switch>
+    
+    <Transform DEF="sunID">
+            <Transform DEF="Sun" translation="0 0 0">
+                <Shape>
+                    <Appearance>
+                        <CommonSurfaceShader>
+                            <ImageTexture containerField="diffuseTexture" url="../media/sun_diffuse.jpg"></ImageTexture>
+                        </CommonSurfaceShader>
+                    </Appearance>
+                    <Sphere USE="sunGeom" />
+                </Shape>
+            </Transform>
+    </Transform>
+
+<SpotLight DEF="lightID" direction="19 0 -5" intensity="6" color="1 1 1" location="-15 -15 -15" beamWidth="0.7854" cutOffAngle="0.7854" shadowIntensity="0.6" />
+
+</Scene>
+</X3D>

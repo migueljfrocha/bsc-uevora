@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head('Login')}"></head>
+<body>
+    <header th:replace="~{fragments/layout :: header(null)}"></header>
+    
+    <main>
+        <div class="form-container">
+            <h1 class="page-title">Login</h1>
+            
+            <!-- Success Message -->
+            <div th:if="${msg}" class="alert alert-success" th:text="${msg}"></div>
+            
+            <!-- Error Message -->
+            <div th:if="${error}" class="alert alert-error" th:text="${error}"></div>
+            
+            <form th:action="@{/login}" method="post">
+                <div class="form-group">
+                    <label for="username" class="form-label required">Username</label>
+                    <input type="text" 
+                           id="username" 
+                           name="username" 
+                           class="form-control" 
+                           required 
+                           autofocus>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password" class="form-label required">Password</label>
+                    <input type="password" 
+                           id="password" 
+                           name="password" 
+                           class="form-control" 
+                           required>
+                </div>
+                
+                <button type="submit" class="btn btn-primary btn-block">Entrar</button>
+                
+                <p class="text-center add-margin-top">
+                    Não tem conta? <a th:href="@{/register}">Registar</a>
+                </p>
+            </form>
+        </div>
+    </main>
+    
+    <div th:replace="~{fragments/layout :: scripts}"></div>
+</body>
+</html>

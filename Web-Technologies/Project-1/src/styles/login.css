@@ -1,0 +1,61 @@
+/* LOGIN PAGE CSS */
+
+.login_btn {
+  width: 200px;
+  height: 50px;
+  margin: 20px;
+  border-radius: 120px;
+  border: 1px solid var(--color-medium-green);
+  background-color: var(--color-light-green);
+  cursor: pointer;
+  text-decoration: none;
+  color: black;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  /* To center the text inside the button */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login_btn:hover {
+  background-color: var(--color-dark-green);
+  font-weight: bold;
+  color: white;
+}
+
+.login_btn:active {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+#login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 50px;
+  border: 1px solid var(--color-medium-green);
+  border-radius: 60px;
+  margin: auto;
+  background-color: white;
+}
+
+#login h2 {
+  margin-bottom: 2em;
+}
+#login p {
+  font-size: 0.8em;
+  margin-top: 1em;
+  color: gray;
+}
+
+@media (max-width: 625px) {
+  #login {
+    border-style: none;
+  }
+}
+@media (max-height: 800px) {
+  #login {
+    margin: 1em auto;
+  }
+}

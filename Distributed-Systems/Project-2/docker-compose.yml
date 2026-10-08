@@ -1,0 +1,66 @@
+services:
+  postgres:
+    image: postgres:latest
+    container_name: postgres-container-trabalho2
+    restart: unless-stopped
+    environment:
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_DB: ${POSTGRES_DB}
+    ports:
+      - "15432:5432"
+    volumes:
+      # For PostgreSQL 18+ the image expects a single mount at /var/lib/postgresql
+      # so the image can place data in version-specific subdirectories.
+      - postgres_data:/var/lib/postgresql
+    networks:
+      - sdist-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER}"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: pgadmin-container-trabalho2
+    restart: unless-stopped
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
+    ports:
+      - "16543:80"
+    depends_on:
+      postgres: 
+        condition: service_healthy
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+    networks:
+      - sdist-network
+
+  activemq:
+    image: apache/activemq-artemis:latest
+    container_name: activemq-container-trabalho2
+    restart: unless-stopped
+    environment:
+      ARTEMIS_USER: ${ACTIVEMQ_USER}
+      ARTEMIS_PASSWORD: ${ACTIVEMQ_PASSWORD}
+    ports:
+      - "61616:61616" # broker
+      - "8161:8161"   # web
+      - "1883:1883"   # MQTT
+    networks:
+      - sdist-network
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:8161/ || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+networks: 
+  sdist-network:
+    driver: bridge
+
+volumes:
+  postgres_data:
+  pgadmin_data:
